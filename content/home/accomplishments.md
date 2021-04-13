@@ -23,28 +23,20 @@ date_format: Jan 2006
 #   Leave other parameters empty if not required.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
-- certificate_url: https://www.coursera.org
-  date_end: ""
-  date_start: "2018-10-01"
+- certificate_url: https://tianchi.aliyun.com/home/science/scienceDetail?spm=5176.12281920.0.0.73c53f74yIMgbF&userId=1095279409977
+  date_end: "2021-03-31"
+  date_start: "2021-02-03"
   description: ""
-  organization: Coursera
-  organization_url: https://www.coursera.org
-  title: Neural Networks and Deep Learning
+  organization: Alibaba Tianchi
+  organization_url: https://tianchi.aliyun.com/
+  title: Top 3% (74/2849) in Tianchi Competition 'AI Earth'
   url: ""
-- certificate_url: https://www.edx.org
-  date_end: ""
-  date_start: "2018-03-01"
-  description: Formulated informed blockchain models, hypotheses, and use cases.
-  organization: edX
-  organization_url: https://www.edx.org
-  title: Blockchain Fundamentals
-  url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-- certificate_url: https://www.datacamp.com
-  date_end: "2017-12-21"
-  date_start: "2017-07-01"
+- certificate_url: https://www.kaggle.com/whurobin/competitions
+  date_end: "2020-06-30"
+  date_start: "2020-04-01"
   description: ""
-  organization: DataCamp
-  organization_url: https://www.datacamp.com
-  title: 'Object-Oriented Programming in R: S3 and R6 Course'
+  organization: Kaggle
+  organization_url: https://www.kaggle.com/
+  title: Top 12% (259/2245) in Kaggle Competition 'Global Wheat Detection'
   url: ""
 ---
