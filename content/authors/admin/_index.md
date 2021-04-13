@@ -68,6 +68,6 @@ email: ""
 highlight_name: false
 ---
 
-I am a phd student of computer science at the Institute of Meteorological and Oceanic Numerical Simulation, National University of Defense Technology. My research interests data assimilation, machine learning and spatial-temporal forecasting. 
+I am a phd student of computer science at the Institute of Meteorological and Oceanic Numerical Simulation, National University of Defense Technology. My research interests include data assimilation, machine learning and spatial-temporal forecasting. 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
