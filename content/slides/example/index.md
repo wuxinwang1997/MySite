@@ -1,5 +1,5 @@
 ---
-title: Slides
+title: Slide Example
 summary: An introduction to using Wowchemy's Slides feature.
 authors: []
 tags: []
