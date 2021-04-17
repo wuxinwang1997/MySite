@@ -1,18 +1,18 @@
 ---
-title: Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model
+title: Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron
 subtitle: 
 
 # Summary for listings and search engines
-summary: 使用CNN预测混沌模型Lorenz96，采用集合卡尔曼滤波同化数据更新初始场
+summary: 提出HDA-MLP对同化结果进行优化，并用MLP替换模式进行预测
 
 # Link this post with a project
 projects: []
 
 # Date published
-date: "2021-04-16"
+date: "2021-04-17"
 
 # Date updated
-lastmod: "2021-04-16"
+lastmod: "2021-04-17"
 
 # Is this an unpublished draft?
 draft: false
@@ -41,78 +41,67 @@ categories:
 - 笔记
 ---
 
-## 背景
+## 主要工作
 
-在地球物理流体动力学中，由于`小尺度特征的表示不正确或物理过程被忽略`，数值模式的某些部分必须由经验子模型或参数化进行表示。地球观测主要包括两个步骤：1. 模型调整和选择；2. 数据同化。
+提出一种HDA-MLP方法，在输出DA结果时有很好的进步性，且计算量小。
 
-机器学习算法已经被用来产生`完全由观测到的低阶混沌系统`的替代模型，然后用于预测。机器学习也已基于真实观测值应用于临近预报。特别的，`在模型误差存在下，由DA解决的优化问题等效于 ML问题`。
-
-在必须基于嘈杂和稀疏的观测结果提出系统状态及其动力学模型的情况下，本文提出的混合算法`依靠DA来估计系统状态，并依靠ML来模拟动力模型`。
+-   通过MLP对单一DA方法(3DVar和EnKF)进行了形式化优化，并构建了新的训练数据集，添加了未来的短期预测来修正当前的同化结果，显著提高了结果的质量
+-   为了优化同化结果，提出了一种新的3D-Var定制MLP
+-   整合了一个创造性的MLP框架HDA-MLP来混合单一的3D-Var和EnKF
 
 ## 问题定义
 
-考虑对于未知过程$\mathbb{x}_k \in \mathbb{R}^m$多维观测的时间序列$\mathbb{y}^{obs}_k \in \mathbb{R}^p$：
+<img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi3.png" alt="fig3" style="zoom:67%;" />
+
+短期预测作为背景场$\mathrm{x}^b$，结合来自新鲜观察$\mathrm{y}^o$的信息来获得分析场$\mathrm{x}^a$，这称作分析循环
+
+单个同化（3D-Var/EnKF）的目的是寻找最佳权重$\mathcal{w}$使得
 $$
-y^{obs}_k=\mathcal{H}_k(x_k)+\epsilon^{obs}_k
+x^a_t=x^b_t+w*(y^o_t-x^b_t)
 $$
-其中$0 \leq k \leq K$是时间步的索引，$\mathcal{H}_k:\mathbb{R}^m\rightarrow\mathbb{R}^p$是观测算子（未知），假设观测误差$\epsilon^{obs}_k$服从均值为$0$和协方差矩阵为$R_k$的正态分布，观察次数$p$及其噪声水平不会随时间变化，且观测空间无关（即$R_k$是一个对角阵），并且考虑常规时间离散化，例如：$\forall k，t_{k + 1} -t_k = h$
 
 
+集合同化则是从不同的同化结果中进行加权
+$$
+x_{hybrid}^a=(1-v)*x_{Var}^a+v*x_{Ensemble}^a
+$$
 
-假设$x_k$是连续过程$x$的时间离散，服从形式为的未知的常微分方程
-$$
-\frac{dx}{dt} = \mathcal{M}(x)
-$$
-目标是得到$t_k$和$t_{k + 1}$之间的$\mathcal{M}$的的替代模型$\mathcal{G}$
-$$
-x_{k+1}=\mathcal{G}(x_k)+\epsilon_k^m=x_k+\int_{t_k}^{t_{k+1}}\mathcal{M}(x)dt \tag{3} \label{eq3}
-$$
-其中$\mathbb{\epsilon}_k^m$是模型$\mathcal{G}$的误差
+
+当前的$\mathrm{x}^a$受到多时刻历史数据的影响，可以将DA重新定义为一个时间序列问题。本文扩展认为，未来的短期预测$\mathrm{x}^b$是由之前的$\mathrm{x}^a$扩展得到的，未来短期的观测$\mathrm{y}^o$可以独立观测，用于修正$\mathrm{x}^a_t$，更具DA的动态性质，它也可以用来修正当前的分析场。
+
+$x^a=f\left(historical(x^b,y^o),future(y^o)\right)$
+
+其中$f$为训练得到的DA模型
+
+考虑使用一段时间的$\mathrm{x}^a$来获得最终的$\mathrm{x}^a$，而不是将不同方法的DA结果结合。因此，混合DA可以定义为基于不同DA方法的多时刻$\mathrm{x}^a$的回归问题。
+
+$x_{Hybrid}^a=F(x_{Var}^a,x_{Ensemble,l}^a),l=1,2,3,\cdots$
+
+其中$F$为训练得到的混合DA模型，$l$表示$\mathrm{x}^a$的长度
 
 ## 方法
 
-### CNN
+### HDA-MLP：优化问题
 
-目前已有论文使用卷积神经网络来表示代理模型。
-
-由于$\ref{eq3}$中表达式可表示为$x_{k+1}=x_k+\cdots$，故采用残差网络的方式构建模型$\mathcal{G}(x)=x_k+f_{nn}(x_k,W)$。
-
-$Loss$函数定义为
+类似4DVar-DA，将同化时间窗设为$[t_1,t_n]$，利用前半段数据进行分析，利用后半段诗句对时间窗中的分析场进行修正，对当前分析场的优化由下式决定
 $$
-L(W)=\sum^{K-{N_f}-1}_{k=0} \sum^{N_f}_{i=1} \|\mathcal{G}_W^{(i)}-x_{k+1}\|_{P_k^{-1}}^2
+x_{ct}^a=\sum\limits^p_{i=0}w_{ct-i}x_{ct-i}^b+\sum\limits^q_{i=0}v_{ct-i}y_{ct-i}^o+bias
 $$
+其中$ct=\frac{n+1}{w},p=\frac{n-1}{2},q=n-1$，$\mathcal{w},\mathcal{v}$分别为$\mathrm{x}^b,\mathrm{y}^o$的权重矩阵
 
+<img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi4.png" alt="fig4" style="zoom:67%;" />
 
-其中$N_f$是时间步数，$P_k$是定义范数$\|x\|_{P_k^-1}^2=x^TP_k^{-1}x$的半正定对称阵，注意：$\mathrm{P}_k$是代理模型的误差协方差矩阵。
+![fig5](https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi5.png)
 
-<img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig2.jpg" alt="fig2" style="zoom:60%;" />
+### 混合
 
-### 同化
+使用MLP优化过的结果作为训练集，直接混合优化后的3D-Var和EnKF的分析场，再用于分析$\mathrm{x}^a_t$
 
-本文使用有限大小的集合卡尔曼滤波器EnKF-N（本文方法不依赖于特定同化过程）
+## 实验结论
 
-EnKF-N是一种序列集合同化方法，时间$t_k$时的分析矩阵$X_k^{a/f} \equiv \left[x_{k,1}^{a/f},\cdots,x_{k,p}^{a/f},\cdots,x_{k,N}^{a/f}\right] \in R^{m \times N}$其中的$a$表示分析场，成员$x_{k,p}^{a/f}=\mathcal{G}(x_{k-1,p}^a)+\epsilon_{k,p}^m$，其中$\mathrm{\epsilon}_{k,p}^a$是第$t_k$时刻成员$p$的模型误差。
+在Lorenz-63上结果比较显著，但是在Lorenz-96上效果不太明显。
 
-分析过程中，给一个观测$\mathrm{y}^{obs}_k$和集合预测$\mathrm{X}_k^f$，使用同化算法更新为$\mathrm{X}_k^a$，对集合进行均值和协方差的求解。
+## 分析
 
-### 结合同化于机器学习
-
-<img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig1.jpg" alt="fig1" style="zoom:50%;" />
-
-该过程可以看作是`期望最大化算法`，其中`DA是期望步骤`，而`ML是最大化步骤`。且ML与DA算法选取是`相互独立`的。
-
-## 实验
-
-组合DA-ML方法使用40变量Lorenz96产生的综合观测值进行测试。通过以下一组常微分方程，在周期一维域上定义模型L96：
-$$
-\frac{x_n}{dt} = (x_{n+1}-x_{n-2})x_{n-1}-x_n+F
-$$
-其中$x_n, 0 \leq n < m$是标量状态变量，$x_m = x_0, x_{−1} = x_{m−1}, x_{−2} = x_{m−2}, m= 40, F = 8$
-
-使用Lyapunov时间单位$t_\Lambda=\Lambda_1t$，其中$t$是模型单位中的时间：一个Lyapunov时间单位对应于误差增长$e$倍的时间。
-
-具体实验步骤查看论文。
-
-## 结论与分析
-
-实验中的观测值是来自全状态向量的子样本，意味着DA充当观测值的插值器和平滑器，从而产生了所谓的“分析”。
+1.  有可能是三层MLP用于替换模式不能捕获Lorenz-96这类稍微复杂的混沌模型的规律，考虑使用时空序列预测的深度学习模型替换模式进行短期预测
+2.  可能是3D-Var本身不考虑时间的维度信息，缺少时间的指导，考虑用RNN替换MLP获取时间信息以增强同化结果
