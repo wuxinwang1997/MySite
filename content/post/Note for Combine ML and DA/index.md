@@ -95,7 +95,7 @@ EnKF-N是一种序列集合同化方法，时间$t_k$时的分析矩阵$X_k^{a/f
 
 分析过程中，给一个观测$\mathrm{y}^{obs}_k$和集合预测$\mathrm{X}_k^f$，使用同化算法更新为$\mathrm{X}_k^a$，对集合进行均值和协方差的求解。
 
-### 结合同化于机器学习
+### 结合同化与机器学习
 
 <img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig1.jpg" alt="fig1" style="zoom:50%;" />
 

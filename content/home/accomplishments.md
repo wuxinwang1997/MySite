@@ -23,6 +23,14 @@ date_format: Jan 2006
 #   Leave other parameters empty if not required.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
+- certificate_url: https://www.kaggle.com/whurobin/competitions
+  date_end: "2021-06-02"
+  date_start: "2021-05-05"
+  description: ""
+  organization: Kaggle
+  organization_url: https://www.kaggle.com/
+  title: Silver Medal in Kaggle Competition 'BirdCLEF-2021' Top 3% (18/848)
+  url: ""
 - certificate_url: https://tianchi.aliyun.com/home/science/scienceDetail?spm=5176.12281920.0.0.73c53f74yIMgbF&userId=1095279409977
   date_end: "2021-03-31"
   date_start: "2021-02-03"
