@@ -226,7 +226,7 @@ $$
   0_{n \times 1}
   \end{pmatrix}
   \end{align}
-<\div>
+</div>
 
 
 
