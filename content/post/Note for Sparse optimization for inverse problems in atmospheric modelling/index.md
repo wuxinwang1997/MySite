@@ -80,26 +80,33 @@ $$
 $$
 \left(\sum^m_{i=1}\frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}(Mx)_i-\sum^m_{i=1}\frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}y_i\right)^2
 $$
-**推导**：
+推导：
 
 本来需要最优化的式子为：
+
 $$
-\left( (Mx)_j-y_j \right)^2
+\left((Mx)_j-y_j \right)^2
 $$
+
 考虑不直接优化该式，转而优化$Mx$与$y$在点$j$的邻居上的距离，考虑$j$与$i$的距离权重占$j$与所有点的距离权重总和来对$i$与$j$的关系进行加权
+
 $$
 \frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}
 $$
+
 表示了$i$对应的数值对$j$的影响占所有$i$对$j$总影响的权重，那么，这里相当于做了一个归一化处理，将指数函数变成了$[0,1]$区间的值。再对该权重乘以对应$i$的值得到$i$对$j$的影响值，则得到要优化的式子。
 
 则，转为最优化
+
 $$
 \sum^m_{j=1}\left(\sum^m_{i=1}\frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}\left((Mx)_i-{\sum^m_{k=1}w(z_j,z_k)}y_i\right)\right)^2
 $$
+
 等价于
 $$
 \left\| W(Mx-y) \right\|^2_2
 $$
+
 其中权值矩阵$W$由元素
 $$
 w_{ij}=\frac{w(z_i,z_j)}{\sum^m_{k=1}w(z_i,z_j)}
