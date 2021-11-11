@@ -133,6 +133,7 @@ $$
 其中$\text{card}A$定义了$A$的元素个数。
 
 则，稀疏优化想要同时最小化$\|x\|_0$与原始目标，即
+
 $$
 \begin{align}
 &\min_x \left\| WMx-Wy \right\|^2_2 \\
@@ -140,7 +141,9 @@ $$
 &x \geq 0
 \end{align}
 $$
+
 但这就造成了一个非凸优化问题，考虑$z_i \in \{0,1\}$，则
+
 $$
 0 \leq x_i \leq z_i ub_i
 $$
