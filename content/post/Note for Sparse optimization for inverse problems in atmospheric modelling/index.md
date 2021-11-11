@@ -198,46 +198,35 @@ $$
 & u_z \in \{0,1\}
 \end{align}
 $$
-
 其中
 
-$$
-\begin{align}
-& u = (x,z), u_z = z\\
-
-& H = 
-\begin{pmatrix}
-M^TW^TWM & 0_{n \times n} \\
-
-0_{n \times n} & 0_{n \times n}
-\end{pmatrix}, 
-
-h = 
-\begin{pmatrix}
--2M^TW^TWy \\
-
-0_{n \times 1}
-\end{pmatrix} \\
-
-& A = 
-\begin{pmatrix}
-0_{1 \times n} & 1_{1 \times n}\\
-
--diag(1_{n \times 1}) & diag(lb) \\
-
-diag(1_{n \times 1}) & -diag(ub)
-\end{pmatrix},
-
-b = 
-\begin{pmatrix}
-k_{tol} \\
-
-0_{n \times 1} \\
-
-0_{n \times 1}
-\end{pmatrix}
-\end{align}
-$$
+<div>
+  \begin{align}
+  & u = (x,z), u_z = z\\
+  & H = 
+  \begin{pmatrix}
+  M^TW^TWM & 0_{n \times n} \\
+  0_{n \times n} & 0_{n \times n}
+  \end{pmatrix}, 
+  h = 
+  \begin{pmatrix}
+  -2M^TW^TWy \\
+  0_{n \times 1}
+  \end{pmatrix} \\
+  & A = 
+  \begin{pmatrix}
+  0_{1 \times n} & 1_{1 \times n}\\
+  -diag(1_{n \times 1}) & diag(lb) \\
+  diag(1_{n \times 1}) & -diag(ub)
+  \end{pmatrix},
+  b = 
+  \begin{pmatrix}
+  k_{tol} \\
+  0_{n \times 1} \\
+  0_{n \times 1}
+  \end{pmatrix}
+  \end{align}
+<\div>
 
 
 
