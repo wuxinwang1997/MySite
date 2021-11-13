@@ -1,5 +1,5 @@
 ---
-title: Sparse optimization for inverse problems in atmospheric modelling
+title: Note for sparse optimization for inverse problems in atmospheric modelling
 subtitle: 
 
 # Summary for listings and search engines
