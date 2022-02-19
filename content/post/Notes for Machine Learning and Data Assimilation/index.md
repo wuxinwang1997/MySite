@@ -12,7 +12,7 @@ projects: []
 date: "2022-02-17"
 
 # Date updated
-lastmod: "2022-02-17"
+lastmod: "2022-02-19"
 
 # Is this an unpublished draft?
 draft: false
@@ -82,7 +82,6 @@ categories:
       w(y^{true_p})&=e^{b(y^{true}_p)^c}
       \end{aligned}
       $$
-      
     2. Loss functions versus auxiliary metrics:
       
       - ROC
@@ -117,7 +116,6 @@ categories:
     
   - how to embed deep learning in a Bayesian framework so as to equip it with the ability to provide uncertainty estimates of the learned model.
     
-  
 - ##### Making the black box more transparent: Understanding the Physical Implications of Machine Learning
   
   aMy McGovern, ryan LaGerquist, david John GaGne ii, G. eLi JerGensen, KiMberLy L. eLMore, caMeron r. hoMeyer, and travis sMith, **BAMS, 2019, Q1** (Citations 120)
@@ -128,16 +126,29 @@ categories:
   
 - ##### A Graph Clustering Approach to Localization for Adaptive Covariance Tuning in Data Assimilation Based on State-Observation Mapping
   
-  Sibo Cheng, Jean-Philippe Argaud, Bertrand Iooss, Angélique Ponçot, Didier Lucor, **Mathematical Geosciences, 2021, Q3** (Citations 2)
+  Sibo Cheng, Jean-Philippe Argaud, Bertrand Iooss, Angélique Ponçot, Didier Lucor, **Mathematical Geosciences, 2021, Q3** [(Citations 2)
   
 - ##### Bridging observations, theory and numerical simulation of the ocean using machine learning
   
-  Maike Sonnewald, Redouane Lguensat, Daniel C Jones, Peter D Dueben, Julien Brajard, **Environmental Research Letters, 2021, Q2** (Citations 2)
+  Maike Sonnewald, Redouane Lguensat, Daniel C Jones, Peter D Dueben, Julien Brajard, **Environmental Research Letters, 2021, Q2**, (Citations 2)
   
 - ##### Deep Data Assimilation: Integrating Deep Learning with Data Assimilation
   
   Rossella Arcucci, Jiangcheng Zhu, Shuang Hu, and Yi-Ke Guo, **Applied Sciences, 2021, Q3** (Citations 14)
   
+  Type: Method
+  
+  This paper use RNN to learn DA result. And do multi-stage training to iteratlly improve the model.
+  
+  It looks like a model error correction not data assimilation.
+  
+  The trained $\mathcal{M}_i$ is a surrogate model using to do prediction.
+  
+  ![](https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/19-11-53-58-2022-02-19-11-53-54-image.png)
+  
+  The key point is that it did not need truth of the system.
+  
+
 - ##### Deep Learning for Geophysics: Current and Future Trends
   
   Siwei Yu, Jianwei Ma, **Reviews of Geophysics, 2021, Q1** (Citations 5)
@@ -184,7 +195,7 @@ categories:
   
 - ##### Analog ensemble data assimilation and a method for constructing analogs with variational autoencoders
   
-  Ian Grooms, **QJR Meteorol. Soc, 2021, Q2** (Citations 7)
+  Ian Grooms, **QJR Meteorol. Soc, 2021, Q2** Citations 7)
   
 - ##### Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations: A case study with the Lorenz 96 model
   
@@ -192,7 +203,7 @@ categories:
   
 - ##### Fast data assimilation (FDA): Data assimilation by machine learning for faster optimize model state
   
-  Pin Wu, Xuting Chang, Wenyan Yuan, Junwu Sun, Wenjie Zhang, Rossella Arcucci, Yike Guo, **Journal of Computational Science, 2021, Q2** (Citations 1)
+  Pin Wu, Xuting Chang, Wenyan Yuan, Junwu Sun, Wenjie Zhang, Rossella Arcucci, Yike Guo, **Journal of Computational Science, 2021, Q2**, (Citations 1)
   
 - ##### Machine Learning Techniques to Construct Patched Analog Ensembles for Data Assimilation
   
@@ -201,5 +212,3 @@ categories:
 - ##### Spatio-Temporal Interpolation of Cloudy SST Fields Using Conditional Analog Data Assimilation
   
   Ronan Fablet, Phi Huynh Viet, Redouane Lguensat, Pierre-Henri Horrein, Bertrand Chapron, **Remote Sensing, 2018, Q2** (Citations 10)
-
-
