@@ -44,29 +44,32 @@ categories:
 ## 学习目的
 
 通过学习WRFDA的源码，了解：
+
 - 观测误差的读取与处理
 - 质量控制的操作
 
 ## WRFDA源码结构
 
 WRFDA源码位于WRF/var目录下，主要由以下几部分构成：
--   build
--   convertor
--   da
--   external
--   gen_be
--   gen_be_v3
--   graphics
--   obsproc
--   run
--   scripts
--   test
+
+- build
+- convertor
+- da
+- external
+- gen_be
+- gen_be_v3
+- graphics
+- obsproc
+- run
+- scripts
+- test
 
 对于观测的读入和写出处理由obsproc模块负责，本人实验中主要使用散射计（QuickStart Scattermeter）数据，首先预处理为Little_R格式数据后再由obsproc模块处理为WRFDA读入需要的.ascii格式数据。
 
 接下来首先对这一部分代码进行学习。
 
 WRF/var/obsproc文件夹下的内容主要包括：
+
 - kmabufr_to_littler
 - MAP_plot
 - src
@@ -111,6 +114,7 @@ WRF/var/obsproc文件夹下的内容主要包括：
   - sort_platform.F90
 
 其中主程序为obsproc.F90，其包含了所有的module代码完成主体功能，包括：
+
 1. 读取编码的观测
 2. 在气压值缺失时补全
 3. 对观测按照位置和时间进行排序
@@ -205,7 +209,7 @@ IF ((obs (obs_num)%info%platform(1:6) .EQ. 'FM-281' ) .and. &
              CASE DEFAULT
                  current%meas%speed%error = 20. !m/s
       END SELECT
-      
+
       current%meas%speed%qc = 0
 
       ELSE IF ((fm == 97 .or. fm == 96 .or. fm == 42) .and. &
@@ -233,7 +237,7 @@ IF ((obs (obs_num)%info%platform(1:6) .EQ. 'FM-281' ) .and. &
                    current%meas%pressure%qc 
               CYCLE read_meas
            endif
-      
+
       ENDIF
 ```
 
@@ -367,4 +371,3 @@ end subroutine da_max_error_qc
 check_max_iv中对于$(o-b)^2>\alpha^2(\sigma^2_o+\sigma_b^2)$的观测直接进行了拒绝，这即是常规的质量控制方案。
 
 若需要对质量控制进行修改，则应对da_max_error_qc代码进行修改。
-
