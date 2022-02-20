@@ -184,17 +184,17 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
   
   - Cycle Consistency (to alleviate the model collapse problem)
     
-    <img src="file:///D:/File/Github/MySite/assets/2022-02-20-21-25-49-image.png" title="" alt="" data-align="center">
+    <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-25-49-image.png" alt="" data-align="center">
   
   - Dynamical Consistency (make $\mathbf{x}$ and $G(\mathbf{x})$ correspond to a same dynamical state $\mathbf{s_x}$)
     
     maintaining the inter-field consistency between the target variable and its underlying dynamical state during training.
     
-    <img src="file:///D:/File/Github/MySite/assets/2022-02-20-21-33-31-image.png" title="" alt="" data-align="center">
+    <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-33-31-image.png" alt="" data-align="center">
     
     $F^*_{\mathbf{X}}$ and $F^*_{\mathbf{Y}}$ are statistical downscaling models for sim and obs; $\mathbf{s_x}$ and $\mathbf{s_y}$ are dynamical state representations corresponding to $\mathbf{x}$ and $\mathbf{y}$, which are typically resolvable variables not directly impaired by GCM biases.
     
-    <img src="file:///D:/File/Github/MySite/assets/2022-02-20-21-38-01-image.png" title="" alt="" data-align="center">
+    <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-38-01-image.png" alt="" data-align="center">
     
     this constraint implicitly encourages spatiotemporal consistency of the target variable, and further alleviates mode collapse. Provided 
   
@@ -202,11 +202,11 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
     
     the bias correction function $G$ should take into consideration of both the target variable $\mathbf{X}$ and the dynamical state $\mathbf{s_x}$
   
-  <img src="file:///D:/File/Github/MySite/assets/2022-02-20-21-45-09-image.png" title="" alt="" data-align="center">
+  <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-45-09-image.png" alt="" data-align="center">
   
   Regularized Adversarial Domain Adaptation (RADA)
   
-  <img src="file:///D:/File/Github/MySite/assets/2022-02-20-21-46-08-image.png" title="" alt="" data-align="center">
+  <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-46-08-image.png" alt="" data-align="center">
   
   Training:
   
