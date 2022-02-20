@@ -174,27 +174,27 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
   
   Train $D$ using $\mathbf{Y}$ and $G(\mathbf{X})$ samples woth random dynamical states.
   
-  ![](D:\File\Github\MySite\assets\2022-02-20-21-23-15-image.png)
+  ![](https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/20-21-56-56-2022-02-20-21-23-15-image.png)
   
   Use Wasserstein GAN.
   
-  <img src="file:///D:/File/Github/MySite/assets/2022-02-20-21-25-31-image.png" title="" alt="" data-align="center">
+  <img title="" src="https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/20-21-57-00-2022-02-20-21-25-31-image.png" alt="" data-align="center">
   
   In order to satisfy the above four conditions of bias corrector, the paper used 4 constraints.
   
   - Cycle Consistency (to alleviate the model collapse problem)
     
-    <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-25-49-image.png" alt="" data-align="center">
+    <img title="" src="https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/20-21-57-02-2022-02-20-21-25-49-image.png" alt="" data-align="center">
   
   - Dynamical Consistency (make $\mathbf{x}$ and $G(\mathbf{x})$ correspond to a same dynamical state $\mathbf{s_x}$)
     
     maintaining the inter-field consistency between the target variable and its underlying dynamical state during training.
     
-    <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-33-31-image.png" alt="" data-align="center">
+    <img title="" src="https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/20-21-57-05-2022-02-20-21-33-31-image.png" alt="" data-align="center">
     
     $F^*_{\mathbf{X}}$ and $F^*_{\mathbf{Y}}$ are statistical downscaling models for sim and obs; $\mathbf{s_x}$ and $\mathbf{s_y}$ are dynamical state representations corresponding to $\mathbf{x}$ and $\mathbf{y}$, which are typically resolvable variables not directly impaired by GCM biases.
     
-    <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-38-01-image.png" alt="" data-align="center">
+    <img title="" src="https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/20-21-57-09-2022-02-20-21-38-01-image.png" alt="" data-align="center">
     
     this constraint implicitly encourages spatiotemporal consistency of the target variable, and further alleviates mode collapse. Provided 
   
@@ -202,17 +202,17 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
     
     the bias correction function $G$ should take into consideration of both the target variable $\mathbf{X}$ and the dynamical state $\mathbf{s_x}$
   
-  <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-45-09-image.png" alt="" data-align="center">
+  <img title="" src="https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/20-21-57-12-2022-02-20-21-45-09-image.png" alt="" data-align="center">
   
   Regularized Adversarial Domain Adaptation (RADA)
   
-  <img title="" src="file:///D:/File/Github/MySite/assets/2022-02-20-21-46-08-image.png" alt="" data-align="center">
+  <img title="" src="https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/20-21-57-16-2022-02-20-21-46-08-image.png" alt="" data-align="center">
   
   Training:
   
-  1. train $F_\mathbf{x}$ and $F_\mathbf{Y}$ to minimize the statical downscaling loss
+  1. train $F_{\mathbf{x}}$ and $F_{\mathbf{Y}}$ to minimize the statical downscaling loss
   
-  2. fix the trained models $F^*_\mathbf{X}$ and $F^*_\mathbf{Y}$ and train $\{G,G^{-1}\}$ to minimize (a)-(d), and train $\{D,D^{-1}\}$ to maximize (a) and (b).
+  2. fix the trained models $F^*_{\mathbf{X}}$ and $F^*_{\mathbf{Y}}$ and train $\{G,G^{-1}\}$ to minimize (a)-(d), and train $\{D,D^{-1}\}$ to maximize (a) and (b).
   
   3. compare some crucial precipitation indices between corrected simulations and observations for the validation set at the end of each training epoch, and terminate the training when these statistics match best.
 
