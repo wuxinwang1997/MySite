@@ -48,6 +48,8 @@ $$
   &s.t \quad x \geq 0
 \end{align}
 $$
+
+
 其中$M$是一个映射（理解为观测算子），$y$为观测，$x$为位置的排放位置，$M$是一个$\mathbb{R}^n \rightarrow \mathbb{R}^m$的映射（$M \in \mathbb{R^{m \times n}}$）。
 
 ## Spatial and temporal location weighting
@@ -124,9 +126,9 @@ $$
 
 稀疏优化的问题，首先提到了常见的方法：
 
-1.   删除列
-2.   $L_2$正则化
-3.   $L_1$正则化（这个可以得到稀疏解）
+1. 删除列
+2. $L_2$正则化
+3. $L_1$正则化（这个可以得到稀疏解）
 
 参考如下知乎回答了解得到$L_1$正则化得到稀疏解的原理
 
@@ -150,7 +152,6 @@ $$
  \end{align}
 $$
 
-
 但这就造成了一个非凸优化问题，考虑$z_i \in \{0,1\}$，则
 $$
   0 \leq x_i \leq z_i ub_i
@@ -161,22 +162,24 @@ $$
 以上问题转化为：
 
 $$
-  \begin{align}
+\begin{align}
   & \min_x \left\| WMx-Wy \right\|^2_2 \\\\
   s.t \quad & \sum^n_{i=1} z_i \leq k_{tol} \\\\
   & z_ilb_i \leq x_i \leq z_iub_i, i = 1,2,\cdots,n \\\\
   & z_i \in \{0, 1\}
-  \end{align}
+\end{align}
 $$
+
 将以上问题写作矩阵形式
 
 $$
-  \begin{align}
+\begin{align}
   &\min_u u^THu+h^Tu \\\\
   & Au \leq b \\\\
   & u_z \in \{0,1\}
-  \end{align}
+\end{align}
 $$
+
 其中
 $$
   \begin{align}
@@ -205,7 +208,3 @@ $$
   \end{pmatrix}
   \end{align}
 $$
-
-
-
-

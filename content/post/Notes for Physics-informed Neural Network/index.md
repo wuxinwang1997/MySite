@@ -102,4 +102,12 @@ MSE_f &= \frac{1}{N_f}\sum^{N_f}_{i=1}\left|f(t^i_f,x^i_f)\right|^2
   
   Type: method
   
-  Physics-informed neural network with sparse regrassion
+  Physics-informed neural network with sparse regrassion.
+  
+  SINDy has strong dependence on both quality and quantity of the measurement data.
+  
+  the deep neural network (DNN) is used to approximate the solution constrained by both the PDE(s) and a small amount of available data. 
+  
+  <img src="file:///D:/Software/MarkText/images/2022-02-22-12-07-30-image.png" title="" alt="" data-align="center">
+  
+  ![](D:\Software\MarkText\images\2022-02-22-12-11-14-image.png)

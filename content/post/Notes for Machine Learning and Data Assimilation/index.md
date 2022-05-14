@@ -3,25 +3,33 @@ title: Notes for Machine Learning and Data Assimilation
 subtitle: 
 
 # Summary for listings and search engines
+
 summary: 机器学习与资料同化结合相关论文笔记
 
 # Link this post with a project
+
 projects: []
 
 # Date published
+
 date: "2022-02-17"
 
 # Date updated
-lastmod: "2022-02-20"
+
+lastmod: "2022-02-26"
 
 # Is this an unpublished draft?
+
 draft: false
 
 # Show this page in the Featured widget?
+
 featured: false
 
 # Featured image
+
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
+
 image:
   caption: ""
   focal_point: ""
@@ -29,16 +37,20 @@ image:
   preview_only: false
 
 authors:
+
 - admin
 
 tags:
+
 - Academic
 - Data Assimilation
 - Machine Learning
 
 categories:
+
 - Note
 - 笔记
+
 ---
 
 - ##### Evaluation, Tuning, and Interpretation of Neural Networks for Working with Images in Meteorological Applications
@@ -131,6 +143,8 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
 - ##### Bridging observations, theory and numerical simulation of the ocean using machine learning
   
   Maike Sonnewald, Redouane Lguensat, Daniel C Jones, Peter D Dueben, Julien Brajard, **Environmental Research Letters, 2021, Q2**, (Citations 2)
+  
+  type: survey
 
 - ##### Deep Data Assimilation: Integrating Deep Learning with Data Assimilation
   
@@ -219,6 +233,16 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
 - ##### Machine Learning for Model Error Inference and Correction
   
   Massimo Bonavita, Patrick Laloyaux, **JAMES, 2020, Q2** (Citations 22)
+  
+  Type: method
+  
+  Learn the model error using MLP. And combined with WC-4DVar
+  
+  The use of ANN models inside the weak-constraint 4D-Var framework has the pootential to extend the applicability of the weak-constraint methodology for model error correction to the whole atmospheric column.
+  
+  The impact of model biases on the assimilation algorithm mainly comes through the O-B residuals, these straegies typically involve a combination of (a) debiasing the O-B through varational bias correction techniques; (b) inflating the estimayes of the background forecast errors sampled from an ensemble data assimilation system.
+  
+  ![](D:\Software\MarkText\images\2022-03-09-20-19-55-image.png)
 
 - ##### Opportunities and challenges for machine learning in weather and climate modelling: hard, medium and soft AI
   
@@ -243,6 +267,14 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
 - ##### Using machine learning to correct model error in data assimilation and forecast applications
   
   Alban Farchi, Patrick Laloyaux, Massimo Bonavita, Marc Bocquet, **Quarterly Journal of the Royal Meteorological Society (QJR Meteorol Soc), 2021, Q2** (Citations 7)
+  
+  Type: method
+  
+  This paper using ML to learn model error and do correcting after a DA step.
+  
+  <img src="https://raw.githubusercontent.com/wuxinwang1997/blogImages/main/2022/02/26-09-43-57-2022-02-26-09-43-51-image.png" title="" alt="" data-align="center">
+  
+  The experiment setting is great.
 
 - ##### Training a convolutional neural network to conserve mass in data assimilation
   
@@ -271,3 +303,21 @@ w(y^{true_p})&=e^{b(y^{true}_p)^c}
 - ##### Spatio-Temporal Interpolation of Cloudy SST Fields Using Conditional Analog Data Assimilation
   
   Ronan Fablet, Phi Huynh Viet, Redouane Lguensat, Pierre-Henri Horrein, Bertrand Chapron, **Remote Sensing, 2018, Q2** (Citations 10)
+
+- ##### Deep Emulators for Differentiation, Forecasting, and Parametrization in Earth Science Simulators
+  
+  Marcel Nonnenmacher, David S. Greenberg, **JAMES, 2021, Q2** (Citations 3)
+  
+  Type: DP method
+  
+  This paper using CNN to learning Lorenz96, and change the adjoint model with NN's derivative.
+  
+  It just learn the function between input and output without the formular of Lorenz96 model.
+  
+  It is the first to estimate derivatives through simulation-trained emulators.
+  
+  The model architecture is awesome.
+
+- ##### Towards Physically-consistent, data-driven models of convection
+  
+  Tom Beucler, Michael Pritchard, Pierre Gentine, Stephan Rasp, **IEEE International Geoscience and Remote Sensing Symposium (IGARSS), 2020**
