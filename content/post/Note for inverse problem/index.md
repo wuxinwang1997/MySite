@@ -1,4 +1,4 @@
-```yaml
+---
 title: 反问题课程笔记
 subtitle: 
 
@@ -46,11 +46,10 @@ tags:
 - Physics-informed Neural Network
 - Machine Learning
 
-categories:
-
+categorie
 - Note
 - 笔记
-```
+---
 
 ##### 正问题与反问题的关系
 
@@ -505,9 +504,5 @@ $$
 \mathbf{G_t} &= \mathbf{S}_t
 \end{aligned}
 $$
-
-
-
-
 
 C.K. Wikle and L.M.Berliner, 2007. A Bayesian tutorial for data assimilation. Physica D.

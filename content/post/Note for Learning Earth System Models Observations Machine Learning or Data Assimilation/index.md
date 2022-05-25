@@ -43,9 +43,9 @@ categories:
 
 ## 主要结论
 
--   资料同化与机器学习的共同点：在贝叶斯理论框架下，都是反问题求解。
--   资料同化的特性：不确定性、稀疏性、非直接观测
--   四维变分同化与RNN在一定程度下是等价的
+- 资料同化与机器学习的共同点：在贝叶斯理论框架下，都是反问题求解。
+- 资料同化的特性：不确定性、稀疏性、非直接观测
+- 四维变分同化与RNN在一定程度下是等价的
 
 ## 背景介绍
 
@@ -97,43 +97,37 @@ DA过程中的时间维度可以等同于前馈神经网络中的层[^8]，但DA
 
 此外，尽管试图丢弃现有的物理知识并开始使用ML进行尝试[^23] [^10] [^12]，但是任何尊重贝叶斯的方法都将尝试从先验知识受益
 
--   机器学习可以`将物理观测模型合并为输出层`
--   `物理模型层也可以并入神经网络`以约束地球物理状态
--   `递归网络`在地球物理状态预测中的主要工作是及时传播此状态，以`保留过去的观测信息`
+- 机器学习可以`将物理观测模型合并为输出层`
+- `物理模型层也可以并入神经网络`以约束地球物理状态
+- `递归网络`在地球物理状态预测中的主要工作是及时传播此状态，以`保留过去的观测信息`
 
 机器学习可以作为：
 
-1.  其他物理模型框架中可学习的模块； 
-2.  用于`学习模型和观察系统误差`； 
-3.  加速过程的一部分的`加速器`（特别是在需要多次运行模型的区域中，这在集合和变体中都存在）； 
-4.  以及作为`变分同化自动微分`的替代工具
-
-
+1. 其他物理模型框架中可学习的模块； 
+2. 用于`学习模型和观察系统误差`； 
+3. 加速过程的一部分的`加速器`（特别是在需要多次运行模型的区域中，这在集合和变体中都存在）； 
+4. 以及作为`变分同化自动微分`的替代工具
 
 [^1]: Geer AJ. Learning earth system models from observations: machine learning or data assimilation? Philos Trans A Math Phys Eng Sci. 2021 Apr 5;379(2194):20200089. doi: 10.1098/rsta.2020.0089. Epub 2021 Feb 15. PMID: 33583270.
-[^2]: Boukabara, S.-A., V. Krasnopolsky, J. Q. Stewart, A. McGovern, D. Hall, J. E. T. Hoeve, J. Hickey, H.L. A. Huang, J. K. Williams, K. Ide, P. Tissot, S. E. Haupt, E. Kearns, K. S. Casey, N. Oza, P. Dolan, P. Childs, S. G. Penny, A. J. Geer, E. Maddy, and R. N. Hoffman (2020). Outlook for exploiting artificial intelligence in earth science. Bull. Am. Meteorol. Soc., submitted.
-[^3]: Reichstein, M., G. Camps-Valls, B. Stevens, M. Jung, J. Denzler, N. Carvalhais, et al. (2019). Deep learning and process understanding for data-driven Earth system science. Nature 566(7743), 195–204.
-[^4]: Gal, Y. and Z. Ghahramani (2016). Dropout as a Bayesian approximation: Representing model uncertainty in deep learning. In International conference on machine learning, pp. 1050–1059.
-[^5]: Lakshminarayanan, B., A. Pritzel, and C. Blundell (2017). Simple and scalable predictive uncertainty estimation using deep ensembles. In Advances in neural information processing systems, pp. 6402–6413.
-[^6]: Bocquet, M., J. Brajard, A. Carrassi, and L. Bertino (2019). Data assimilation as a learning tool to infer ordinary differential equation representations of dynamical models. Nonlinear Processes in Geophysics 26(3), 143–162
-[^7]: Brajard, J., A. Carassi, M. Bocquet, and L. Bertino (2020). Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations: a case study with the Lorenz 96 model. arXiv preprint arXiv:2001.01520.
-[^8]: Abarbanel, H. D., P. J. Rozdeba, and S. Shirman (2018). Machine learning: deepest learning as statistical data assimilation problems. Neural Computation 30(8), 2025–2055.
-[^9]: Park, D. C. and Y. Zhu (1994). Bilinear recurrent neural network. In Proceedings of1994 IEEE International Conference on Neural Networks (ICNN’94), Volume 3, pp. 1459–1464. IEEE.
-[^10]: Pathak, J., B. Hunt, M. Girvan, Z. Lu, and E. Ott (2018). Model-free prediction of large spatiotemporally chaotic systems from data: A reservoir computing approach. Phys. Rev. Let. 120(2), 024102.
-[^11]: Vlachas, P., J. Pathak, B. Hunt, T. Sapsis, M. Girvan, E. Ott, and P. Koumoutsakos (2020). Backpropagation algorithms and reservoir computing in recurrent neural networks for the forecasting of complex spatiotemporal dynamics. Neural Networks 126, 191–217.
-[^12]: Sønderby, C. K., L. Espeholt, J. Heek, M. Dehghani, A. Oliver, T. Salimans, S. Agrawal, J. Hickey, and N. Kalchbrenner (2020). MetNet: A neural weather model for precipitation forecasting. arXiv preprint arXiv:2003.12140.
-[^13]: Schneider, T., S. Lan, A. Stuart, and J. Teixeira (2017). Earth system modeling 2.0: A blueprint for models that learn from observations and targeted high-resolution simulations. Geophys. Res. Let. 44(24), 12–396.
-[^14]: Gentine, P., M. Pritchard, S. Rasp, G. Reinaudi, and G. Yacalis (2018). Could machine learning break the convection parameterization deadlock? Geophysical Research Letters 45(11), 5742–5751.
-[^15]: Reichstein, M., G. Camps-Valls, B. Stevens, M. Jung, J. Denzler, N. Carvalhais, et al. (2019). Deep learning and process understanding for data-driven Earth system science. Nature 566(7743), 195–204.
-[^16]: Beucler, T., M. Pritchard, S. Rasp, P. Gentine, J. Ott, and P. Baldi (2019). Enforcing analytic constraints in neural-networks emulating physical systems. arXiv preprint arXiv:1909.00912.
-[^17]: Wu, Y., M. Schuster, Z. Chen, Q. V. Le, M. Norouzi, W. Macherey, M. Krikun, Y. Cao, Q. Gao, K. Macherey, et al. (2016). Google’s neural machine translation system: Bridging the gap between human and machine translation. arXiv preprint arXiv:1609.08144.
-[^18]: Von Rueden, L., S. Mayer, J. Garcke, C. Bauckhage, and J. Schuecker (2019). Informed machine learning–towards a taxonomy of explicit integration of knowledge into machine learning. Learning 18, 19–20.
-[^19]: McGovern, A., K. L. Elmore, D. J. Gagne, S. E. Haupt, C. D. Karstens, R. Lagerquist, T. Smith, and J. K. Williams (2017). Using artificial intelligence to improve real-time decision-making for high-impact weather. Bulletin ofthe American Meteorological Society 98(10), 2073–2090.
-[^20]: Bonavita, M. and P. Laloyaux (2020). Machine learning for model error inference and correction. J. App. Meterol. Earth. Sys., to be submitted.
-[^21]: Ott, J., M. Pritchard, N. Best, E. Linstead, M. Curcic, and P. Baldi (2020). A Fortran-Keras deep learning bridge for scientific computing. arXiv preprint arXiv:2004.10652.
-[^22]: English, S., P. Lean, and A. Geer (2020). How radiative transfer models can support the future needs of earth-system forecasting and re-analysis. J. Quant. Spectrosc. Rad. Trans., accepted.
-[^23]: Dueben, P. D. and P. Bauer (2018). Challenges and design choices for global weather and climate models based on machine learning. Geosci. Mod. Dev. 11(10), 3999–4009.
-
-
-
-
+Boukabara, S.-A., V. Krasnopolsky, J. Q. Stewart, A. McGovern, D. Hall, J. E. T. Hoeve, J. Hickey, H.L. A. Huang, J. K. Williams, K. Ide, P. Tissot, S. E. Haupt, E. Kearns, K. S. Casey, N. Oza, P. Dolan, P. Childs, S. G. Penny, A. J. Geer, E. Maddy, and R. N. Hoffman (2020). Outlook for exploiting artificial intelligence in earth science. Bull. Am. Meteorol. Soc., submitted.
+Reichstein, M., G. Camps-Valls, B. Stevens, M. Jung, J. Denzler, N. Carvalhais, et al. (2019). Deep learning and process understanding for data-driven Earth system science. Nature 566(7743), 195–204.
+Gal, Y. and Z. Ghahramani (2016). Dropout as a Bayesian approximation: Representing model uncertainty in deep learning. In International conference on machine learning, pp. 1050–1059.
+Lakshminarayanan, B., A. Pritzel, and C. Blundell (2017). Simple and scalable predictive uncertainty estimation using deep ensembles. In Advances in neural information processing systems, pp. 6402–6413.
+Bocquet, M., J. Brajard, A. Carrassi, and L. Bertino (2019). Data assimilation as a learning tool to infer ordinary differential equation representations of dynamical models. Nonlinear Processes in Geophysics 26(3), 143–162
+Brajard, J., A. Carassi, M. Bocquet, and L. Bertino (2020). Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations: a case study with the Lorenz 96 model. arXiv preprint arXiv:2001.01520.
+Abarbanel, H. D., P. J. Rozdeba, and S. Shirman (2018). Machine learning: deepest learning as statistical data assimilation problems. Neural Computation 30(8), 2025–2055.
+Park, D. C. and Y. Zhu (1994). Bilinear recurrent neural network. In Proceedings of1994 IEEE International Conference on Neural Networks (ICNN’94), Volume 3, pp. 1459–1464. IEEE.
+Pathak, J., B. Hunt, M. Girvan, Z. Lu, and E. Ott (2018). Model-free prediction of large spatiotemporally chaotic systems from data: A reservoir computing approach. Phys. Rev. Let. 120(2), 024102.
+Vlachas, P., J. Pathak, B. Hunt, T. Sapsis, M. Girvan, E. Ott, and P. Koumoutsakos (2020). Backpropagation algorithms and reservoir computing in recurrent neural networks for the forecasting of complex spatiotemporal dynamics. Neural Networks 126, 191–217.
+Sønderby, C. K., L. Espeholt, J. Heek, M. Dehghani, A. Oliver, T. Salimans, S. Agrawal, J. Hickey, and N. Kalchbrenner (2020). MetNet: A neural weather model for precipitation forecasting. arXiv preprint arXiv:2003.12140.
+Schneider, T., S. Lan, A. Stuart, and J. Teixeira (2017). Earth system modeling 2.0: A blueprint for models that learn from observations and targeted high-resolution simulations. Geophys. Res. Let. 44(24), 12–396.
+Gentine, P., M. Pritchard, S. Rasp, G. Reinaudi, and G. Yacalis (2018). Could machine learning break the convection parameterization deadlock? Geophysical Research Letters 45(11), 5742–5751.
+Reichstein, M., G. Camps-Valls, B. Stevens, M. Jung, J. Denzler, N. Carvalhais, et al. (2019). Deep learning and process understanding for data-driven Earth system science. Nature 566(7743), 195–204.
+Beucler, T., M. Pritchard, S. Rasp, P. Gentine, J. Ott, and P. Baldi (2019). Enforcing analytic constraints in neural-networks emulating physical systems. arXiv preprint arXiv:1909.00912.
+Wu, Y., M. Schuster, Z. Chen, Q. V. Le, M. Norouzi, W. Macherey, M. Krikun, Y. Cao, Q. Gao, K. Macherey, et al. (2016). Google’s neural machine translation system: Bridging the gap between human and machine translation. arXiv preprint arXiv:1609.08144.
+Von Rueden, L., S. Mayer, J. Garcke, C. Bauckhage, and J. Schuecker (2019). Informed machine learning–towards a taxonomy of explicit integration of knowledge into machine learning. Learning 18, 19–20.
+McGovern, A., K. L. Elmore, D. J. Gagne, S. E. Haupt, C. D. Karstens, R. Lagerquist, T. Smith, and J. K. Williams (2017). Using artificial intelligence to improve real-time decision-making for high-impact weather. Bulletin ofthe American Meteorological Society 98(10), 2073–2090.
+Bonavita, M. and P. Laloyaux (2020). Machine learning for model error inference and correction. J. App. Meterol. Earth. Sys., to be submitted.
+Ott, J., M. Pritchard, N. Best, E. Linstead, M. Curcic, and P. Baldi (2020). A Fortran-Keras deep learning bridge for scientific computing. arXiv preprint arXiv:2004.10652.
+English, S., P. Lean, and A. Geer (2020). How radiative transfer models can support the future needs of earth-system forecasting and re-analysis. J. Quant. Spectrosc. Rad. Trans., accepted.
+Dueben, P. D. and P. Bauer (2018). Challenges and design choices for global weather and climate models based on machine learning. Geosci. Mod. Dev. 11(10), 3999–4009.
