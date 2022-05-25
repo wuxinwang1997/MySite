@@ -46,7 +46,7 @@ tags:
 - Physics-informed Neural Network
 - Machine Learning
 
-categorie
+categories:
 - Note
 - 笔记
 ---
